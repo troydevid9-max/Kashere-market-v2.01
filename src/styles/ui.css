@@ -1660,5 +1660,5 @@
 
 /* No decorative circle behind product photos or placeholder icons */
 .pimg::before {
-  display: none;
+  display: none !important;
 }
