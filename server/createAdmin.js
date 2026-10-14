@@ -1,16 +1,13 @@
-/* Create (or reset) a real admin account:  ADMIN_EMAIL=you@x.com ADMIN_PASSWORD=... npm run create-admin */
-import crypto from 'node:crypto'
-import bcrypt from 'bcryptjs'
+/* Create or reset an admin from your own computer:
+   ADMIN_EMAIL=you@x.com ADMIN_PASSWORD='long-password' npm run create-admin
+   (Windows PowerShell:  $env:ADMIN_EMAIL="you@x.com"; $env:ADMIN_PASSWORD="long-password"; npm run create-admin)
+   Add ADMIN_RESET=true to replace the password of an existing admin. */
 import { createDb } from './db.js'
 import { ensureSchema } from './schema.js'
-import { now } from './lib/http.js'
+import { ensureAdmin } from './lib/adminSetup.js'
 
-const email = (process.env.ADMIN_EMAIL || '').toLowerCase()
-const password = process.env.ADMIN_PASSWORD || ''
-if (!email || password.length < 12) { console.error('Set ADMIN_EMAIL and ADMIN_PASSWORD (at least 12 characters).'); process.exit(1) }
 const db = createDb(); await ensureSchema(db)
-const hash = await bcrypt.hash(password, 12)
-const existing = await db('users').where({ email }).first()
-if (existing) await db('users').where({ id: existing.id }).update({ password_hash: hash, is_admin: 1 })
-else await db('users').insert({ id: crypto.randomUUID(), name: 'Admin', email, matric: 'ADMIN-' + crypto.randomBytes(3).toString('hex').toUpperCase(), phone: null, password_hash: hash, is_admin: 1, verification_status: 'approved', created_at: now() })
-console.log('Admin ready:', email); await db.destroy()
+try {
+  const what = await ensureAdmin(db, { email: process.env.ADMIN_EMAIL, password: process.env.ADMIN_PASSWORD, reset: process.env.ADMIN_RESET === 'true' })
+  console.log(`Admin ${process.env.ADMIN_EMAIL}: ${what}`)
+} catch (e) { console.error(e.message); process.exitCode = 1 } finally { await db.destroy() }
