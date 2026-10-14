@@ -1658,7 +1658,7 @@
   }
 }
 
-/* No decorative circle behind product photos or placeholder icons */
-.pimg::before {
-  display: none !important;
+/* Safe alternative without using !important */
+.pgrid .pcard .pcard__media .pimg::before {
+  display: none;
 }
