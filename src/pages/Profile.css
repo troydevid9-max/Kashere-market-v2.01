@@ -1,0 +1,9 @@
+.phead { display: grid; gap: 16px; padding: 20px; margin-top: 16px; }
+@media (min-width: 700px) { .phead { grid-template-columns: auto 1fr auto; align-items: center; } }
+.phead h1 { font-size: 24px; font-weight: 800; } .phead__id { color: var(--muted); font-size: 14px; }
+.pstats { display: flex; gap: 22px; } .pstats b { display: block; font-size: 20px; font-weight: 800; } .pstats small { color: var(--muted); font-size: 12.5px; }
+.listrow { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.listrow:last-child { border-bottom: 0; }
+.listrow .thumb { width: 56px; height: 56px; }
+.listrow__r { margin-left: auto; text-align: right; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+.cmp { padding: 14px 0; border-bottom: 1px solid var(--border); } .cmp:last-child { border-bottom: 0; }

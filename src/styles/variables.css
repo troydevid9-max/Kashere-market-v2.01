@@ -1,0 +1,44 @@
+:root {
+  /* Palette: premium black, whitesmoke and faint grey. (Variable names kept from the green theme.) */
+  --g-950: #080808;
+  --g-900: #0e0e0e;
+  --g-800: #161616;
+  --g-700: #0e0e0e;
+  --g-600: #2a2a2a;
+  --g-500: #7a7a7a;
+  --g-200: #dcdcdc;
+  --g-100: #ececec;
+  --g-50: #f2f2f2;
+
+  --bg: #f4f4f4;
+  --surface: #fbfbfb;
+  --border: #e6e6e6;
+  --border-strong: #d4d4d4;
+  --text: #0e0e0e;
+  --muted: #6b6b6b;
+  --light: #9a9a9a;
+  --pos: #1f9d63;
+  --danger: #d64545;
+  --danger-bg: #fdeceb;
+  --warn: #444444;
+  --warn-bg: #ececec;
+  --info: #111111;
+  --info-bg: #ececec;
+
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-serif: var(--font);
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+  --r-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.18);
+
+  --nav-h: 64px;
+  --tabs-h: 64px;
+  --container: 1200px;
+}

@@ -1,0 +1,6 @@
+.notes { display: flex; flex-direction: column; gap: 10px; }
+.note { display: flex; gap: 12px; align-items: flex-start; width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 14px 16px; }
+.note:hover { border-color: var(--border-strong); }
+.note b { font-size: 14.5px; display: block; } .note p { color: var(--muted); font-size: 13.5px; margin-top: 2px; } .note small { color: var(--light); font-size: 12px; white-space: nowrap; }
+.note__dot { width: 9px; height: 9px; border-radius: 50%; background: transparent; margin-top: 6px; flex: none; }
+.note.is-new .note__dot { background: #0e0e0e; } .note.is-new { background: #fff; border-color: var(--border-strong); }

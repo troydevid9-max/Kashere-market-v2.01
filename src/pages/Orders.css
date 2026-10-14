@@ -1,0 +1,24 @@
+.ord { padding-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.ord__row { display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: 22px; background: var(--surface); border: 1px solid var(--border); }
+.ord__row:hover { border-color: var(--border-strong); }
+.ord__row .thumb { width: 64px; height: 64px; }
+.ord__row b { font-size: 14.5px; display: block; line-height: 1.3; } .ord__row small { color: var(--muted); font-size: 12.5px; display: block; margin-top: 2px; }
+.ord__end { margin-left: auto; text-align: right; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex: none; }
+.ord__end strong { font-size: 16px; }
+.od { max-width: 760px; padding-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+.od__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+.od__head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; }
+.tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; position: relative; }
+.tl__s { text-align: center; position: relative; font-size: 12.5px; color: var(--light); display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.tl__s:not(:last-child)::after { content: ''; position: absolute; top: 15px; left: calc(50% + 18px); right: calc(-50% + 18px); height: 2px; background: var(--border-strong); }
+.tl__s.is-done:not(:last-child)::after { background: var(--g-700); }
+.tl__dot { width: 32px; height: 32px; border-radius: 50%; background: #ececec; color: var(--muted); display: grid; place-items: center; border: 1px solid var(--border); }
+.tl__s.is-done { color: var(--text); font-weight: 600; } .tl__s.is-done .tl__dot { background: var(--g-700); color: #fff; border-color: var(--g-700); }
+.tl__s small { font-weight: 400; color: var(--light); font-size: 11.5px; }
+.od__sec { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.od__item { display: flex; gap: 12px; align-items: center; }
+.od__item .thumb { width: 54px; height: 54px; }
+.od__photo { width: 100%; max-height: 360px; object-fit: cover; border-radius: 18px; border: 1px solid var(--border); }
+.stars-pick { display: flex; gap: 6px; } .stars-pick button { color: #c9c9c9; } .stars-pick button.is-on { color: var(--g-700); }
+.stars-pick svg { fill: currentColor; }
+.checkline { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }

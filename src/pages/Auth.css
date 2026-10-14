@@ -1,0 +1,43 @@
+.auth { min-height: 100vh; background: #f7f7f7; display: flex; flex-direction: column; align-items: center; }
+.auth__col { width: 100%; max-width: 460px; padding: calc(env(safe-area-inset-top) + 22px) 20px 28px; display: flex; flex-direction: column; flex: 1; }
+.auth__top { display: flex; align-items: center; justify-content: space-between; min-height: 56px; }
+.auth__link { color: var(--g-800); font-weight: 600; }
+.auth h1.auth__title { font-size: 34px; font-weight: 800; color: var(--g-900); margin: 22px 0 8px; letter-spacing: -0.01em; }
+.auth h1.auth__title--sans { font-family: var(--font); font-weight: 800; font-size: 28px; margin: 8px 0 8px; line-height: 1.12; }
+.auth__lead { color: var(--muted); font-size: 16px; line-height: 1.5; margin-bottom: 22px; }
+.auth__form { display: flex; flex-direction: column; gap: 12px; }
+.auth__row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; margin: 2px 2px 4px; }
+.check { display: inline-flex; align-items: center; gap: 10px; font-size: 13.5px; cursor: pointer; }
+.check input { position: absolute; opacity: 0; width: 0; }
+.check__box { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--border-strong); background: var(--surface); display: grid; place-items: center; color: #fff; flex: none; }
+.check input:checked + .check__box { background: var(--g-800); border-color: var(--g-800); }
+.check input:focus-visible + .check__box { outline: 2px solid var(--g-500); outline-offset: 2px; }
+.linkbtn { color: var(--g-800); font-weight: 600; }
+.linkbtn:hover { text-decoration: underline; }
+.divider { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 13.5px; margin: 16px 0 12px; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.social { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.social .btn { height: 52px; border-radius: 14px; background: var(--surface); border: 1px solid var(--border); font-weight: 600; box-shadow: var(--shadow-sm); }
+.auth__alt { text-align: center; color: var(--muted); font-size: 14px; margin-top: 18px; }
+.auth__tagline { text-align: center; font-size: 12.5px; color: var(--g-900); margin-top: 22px; font-weight: 500; }
+.auth__tagline span { margin: 0 8px; color: var(--light); }
+.auth__alert { background: var(--danger-bg); color: var(--danger); border-radius: 12px; padding: 10px 14px; font-size: 14px; }
+.auth__gate { margin: 26px -20px -28px; position: relative; flex: 1; min-height: 260px; background: #f1f1f1 url('../assets/campus-gate.jpg') center bottom / cover no-repeat; border-radius: 24px; }
+.auth__gate::before { content: ''; position: absolute; inset: 0; background: linear-gradient(#f7f7f7 0%, rgba(251,251,248,0) 38%); border-radius: inherit; }
+@media (min-width: 600px) { .auth__col { padding-top: 40px; } .auth__gate { margin: 26px 0 0; border-radius: 24px; } }
+.vtoggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 18px; }
+.vtoggle button { display: flex; align-items: center; gap: 8px; text-align: left; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-sm); min-height: 62px; }
+.vtoggle b { display: block; font-size: 13.5px; white-space: nowrap; } .vtoggle small { font-size: 12px; color: var(--light); }
+.vtoggle .is-on { background: var(--g-800); border-color: var(--g-800); color: #fff; }
+.vtoggle .is-on small { color: #dcdcdc; }
+.vtoggle svg { flex: none; }
+.vtoggle__sw { width: 38px; height: 22px; border-radius: 99px; background: var(--g-500); position: relative; flex: none; }
+.vtoggle__sw::after { content: ''; position: absolute; right: 3px; top: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--surface); }
+.auth__sect { font-size: 17px; font-weight: 700; color: var(--g-900); margin: 14px 0 2px; }
+.vhero { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; margin-bottom: 14px; }
+.vhero img { width: 138px; height: auto; border-radius: 16px; mix-blend-mode: multiply; }
+@media (max-width: 380px) { .vhero img { width: 110px; } .auth h1.auth__title--sans { font-size: 27px; } }
+.vtoggle > * { min-width: 0; }
+.vtoggle b { white-space: normal; }
+.vtoggle .is-on > svg:last-child { width: 18px; height: 18px; }
+@media (max-width: 400px) { .vtoggle { gap: 8px; } .vtoggle button { padding: 10px; } .vtoggle__sw { display: none; } }

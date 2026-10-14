@@ -1,0 +1,37 @@
+.hero { margin-top: 16px; border-radius: 28px; background: radial-gradient(90% 120% at 100% 0%, #262626 0%, #161616 40%, #0b0b0b 100%); color: #fff; padding: 28px 22px; display: grid; gap: 24px; overflow: hidden; position: relative; }
+@media (min-width: 900px) { .hero { grid-template-columns: 1.1fr .9fr; padding: 52px 52px; gap: 40px; align-items: center; margin-top: 24px; } }
+.hero h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; }
+.hero p.lead { color: #c8c8c8; font-size: 16.5px; margin: 14px 0 22px; max-width: 480px; line-height: 1.55; }
+.hero__cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero__cta .btn--ghost { color: #fff; border-color: rgba(255,255,255,.35); } .hero__cta .btn--ghost:hover { background: rgba(255,255,255,.1); }
+.hero__panel { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 22px; padding: 20px; backdrop-filter: blur(6px); }
+.hero__panel h2 { font-size: 15px; font-weight: 600; color: #cfcfcf; margin-bottom: 14px; display: flex; gap: 8px; align-items: center; }
+.flow { display: flex; flex-direction: column; gap: 0; }
+.flow li { display: flex; gap: 14px; position: relative; padding-bottom: 16px; }
+.flow li:last-child { padding-bottom: 0; }
+.flow li:not(:last-child)::before { content: ''; position: absolute; left: 19px; top: 40px; bottom: 2px; width: 2px; background: rgba(255,255,255,.2); }
+.flow__ico { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.14); display: grid; place-items: center; flex: none; }
+.flow li:last-child .flow__ico { background: #3a3a3a; }
+.flow b { display: block; font-size: 15px; } .flow span { font-size: 13.5px; color: #bdbdbd; }
+.trust { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
+@media (min-width: 900px) { .trust { grid-template-columns: repeat(4, 1fr); } }
+.trust__i { display: flex; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 14px; }
+.trust__i svg { color: var(--g-700); flex: none; } .trust__i b { font-size: 13.5px; display: block; line-height: 1.25; } .trust__i small { color: var(--muted); font-size: 12px; line-height: 1.3; display: block; }
+.sec { margin-top: 36px; }
+.sec__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 10px; }
+.sec__head h2 { font-size: 22px; font-weight: 800; } .sec__head a { color: var(--g-700); font-weight: 600; font-size: 14px; white-space: nowrap; }
+.cats { display: flex; gap: 14px; overflow-x: auto; padding: 4px 16px 8px; margin: 0 -16px; scrollbar-width: none; }
+.cats::-webkit-scrollbar { display: none; }
+@media (min-width: 900px) { .cats { justify-content: space-between; margin: 0; padding: 4px 0 8px; } }
+.cat { display: flex; flex-direction: column; align-items: center; gap: 7px; flex: none; width: 92px; font-size: 13px; font-weight: 600; text-align: center; }
+.cat__c { width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); color: var(--ink); transition: transform .15s; }
+.cat:hover .cat__c { transform: scale(1.05); }
+.promos { display: grid; gap: 12px; margin-top: 36px; }
+@media (min-width: 800px) { .promos { grid-template-columns: 1.3fr 1fr 1fr; } }
+.promo { border-radius: 20px; padding: 20px; min-height: 160px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; position: relative; overflow: hidden; }
+.promo small { font-size: 12.5px; font-weight: 600; opacity: .8; } .promo h3 { font-size: 22px; margin-top: 4px; line-height: 1.15; } .promo p { font-size: 13.5px; opacity: .85; margin-top: 6px; }
+.promo--dark { background: #0d0d0d; color: #fff; } .promo--dark .btn { background: var(--surface); color: var(--g-900); align-self: flex-start; }
+.promo--sand { background: #ececec; } .promo--mint { background: #e9e9e9; }
+.promo--sand .btn, .promo--mint .btn { align-self: flex-start; background: var(--surface); border-color: transparent; }
+.promo__big { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; color: #ffffff; line-height: 1; }
+.heroimg { display: none; }
