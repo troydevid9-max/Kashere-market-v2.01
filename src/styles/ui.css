@@ -1658,7 +1658,11 @@
   }
 }
 
-/* Safe alternative without using !important */
-.pgrid .pcard .pcard__media .pimg::before {
-  display: none;
+/* Erases the dynamic background layout circles on both shop cards and detail page headers */
+.pimg::before,
+.div.pimg::before,
+.div.gal_main .pimg::before {
+  display: none !important;
+  content: none !important;
+  background: transparent !important;
 }
