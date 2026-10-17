@@ -1,0 +1,61 @@
+/* =====================================================================
+   mobile-fixes.css  (import this LAST in src/index.css)
+   Fixes: product page sideways overflow, checkout/thank-you side padding,
+   store header squeeze, admin tables clipped, and the circle over photos.
+   ===================================================================== */
+
+/* 0. Safety net: the page itself must never scroll sideways */
+html, body { max-width: 100%; overflow-x: clip; }
+
+/* 1. Product page: a row of thumbnails must not widen the page */
+.pd { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .pd { grid-template-columns: 400px minmax(0, 1fr); } }
+.pd > *, .pd > div > * { min-width: 0; max-width: 100%; }
+.gal__main, .gal__thumbs { max-width: 100%; }
+.pd h1, .pd__desc, .seller b { overflow-wrap: anywhere; }
+
+/* 2. Checkout + thank-you: `.co` / `.ty` sit on the .container element, and their
+      `padding: Xpx 0 Ypx` was wiping the side padding, so content touched the screen edges */
+/* (higher specificity than Checkout.css, which loads later and would otherwise win) */
+.container.co, .container.ty { padding-left: 16px; padding-right: 16px; }
+@media (min-width: 900px) { .container.co, .container.ty { padding-left: 32px; padding-right: 32px; } }
+
+/* 3. Store header: stack on phones instead of squeezing the name into a thin column */
+@media (max-width: 599px) {
+  .store__hero { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .store__hero > .grow { width: 100%; }
+  .store__hero h1 { font-size: 22px; overflow-wrap: anywhere; }
+  .store__hero > .btn { width: 100%; }
+}
+
+/* 4. Admin / dashboard tables: scroll sideways inside their card instead of being cut off */
+.dtable, .tablewrap { position: relative; }  /* keeps hidden .sr-only labels inside the table so they cannot widen the page */
+.dtable { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.dtable .table { min-width: 640px; }
+.dtable .table th, .dtable .table td { white-space: nowrap; }
+/* first column holds names/titles/emails: give it room and let long words break only when they must */
+.dtable .table td:first-child { white-space: normal; min-width: 210px; overflow-wrap: break-word; }
+.dash__body, .dash__main { min-width: 0; }
+
+/* 4b. Long unbroken text (titles, names) must wrap or truncate instead of pushing prices/badges off screen */
+.listrow > div:nth-child(2), .ord__row > .grow, .od__item > .grow, .cartline > .grow, .orow > div:nth-child(2), .co__item > .grow, .mini__body { min-width: 0; overflow-wrap: anywhere; }
+.listrow__r, .ord__end { flex: none; }
+.crumbs span:last-child { min-width: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* 4c. Very small phones (320px): make the top bar fit */
+@media (max-width: 359px) {
+  .nav__in { gap: 8px; }
+  .nav__icons { gap: 0; }
+  .iconbtn { width: 38px; height: 38px; }
+  .nav__mobile-search { display: none; }
+}
+
+/* 5. Photos: real photos use their own `.photo` box (see ProductImage.jsx). No circle, ever. */
+.photo { position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: #ececec; }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.thumb .photo, .gal__thumbs .photo { height: 100%; aspect-ratio: auto; }
+.gal__main .photo { aspect-ratio: 4 / 3; }
+@media (min-width: 900px) { .gal__main .photo { aspect-ratio: 1 / 1; } }
+.mini__card .photo { aspect-ratio: 1.3; }
+.pimg::before, .pimg::after, .photo::before, .photo::after,
+.gal__main::before, .gal__main::after, .gal__thumbs button::before, .gal__thumbs button::after { content: none !important; display: none !important; }
