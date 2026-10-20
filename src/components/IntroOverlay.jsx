@@ -14,8 +14,10 @@ export function IntroOverlay({ onFinish }) {
       <div className="intro__atmosphere" aria-hidden="true" />
       <div className="intro__brand">
         <img className="intro__logo" src="/brand/logo.jpg" alt="Kashere shopping bag logo" />
-        <div className="intro__wordmark">KASHERE</div>
-        <div className="intro__subtitle"><span />STUDENT MARKETPLACE<span /></div>
+        <div className="intro__copy">
+          <div className="intro__wordmark">KASHERE</div>
+          <div className="intro__subtitle"><span />STUDENT MARKETPLACE<span /></div>
+        </div>
       </div>
       <button className="intro__skip" type="button" onClick={onFinish} autoFocus>
         Skip

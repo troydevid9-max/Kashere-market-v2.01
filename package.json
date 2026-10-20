@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "seed": "node server/seed.js",
     "create-admin": "node server/createAdmin.js",
-    "test": "node --test \"server/tests/**/*.test.js\"",
+    "test": "node --import ./server/tests/bootstrap.js --test \"server/tests/**/*.test.js\"",
     "icons": "node scripts/make-icons.mjs"
   },
   "dependencies": {
