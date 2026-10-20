@@ -19,6 +19,15 @@ The API serves the built website too, so you deploy **one** Node service plus a 
 
 The server refuses to start in production without `JWT_SECRET`. Mock payments are impossible in production.
 
+### Render product-photo storage
+Uploaded photos must be stored on a persistent disk; the service's temporary filesystem can be cleared when Render restarts or redeploys it. In the Render web service settings:
+
+1. Add a persistent disk with mount path `/data` (if your plan supports disks).
+2. Set `UPLOAD_DIR` to `/data/uploads`.
+3. Redeploy the service and upload a test photo, then confirm its `/uploads/...` URL still works after a restart.
+
+Changing `UPLOAD_DIR` does not move existing files. Copy available files from the old upload directory to the disk's `public` and `private` folders, preserving filenames. If the old files are already gone, the database cannot recreate the photo bytes; affected listings need their photos uploaded again.
+
 ## 3. Build and start
 ```
 npm install && npm run build
