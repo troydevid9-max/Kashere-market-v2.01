@@ -2,19 +2,26 @@
 
 A student-only marketplace for Federal University of Kashere with **escrow payments**: the buyer pays Kashere, the seller delivers, the buyer confirms with a photo, and only then is the seller paid.
 
-**Stack:** React 19 + Vite (PWA) · Node 22.13+ / Express 5 · Knex (SQLite locally, Postgres in production) · Paystack for payments.
+**Stack:** React 19 + Vite (PWA) · Node 22.13+ / Express 5 · Knex + Postgres · Paystack for payments.
 
-## Run it locally
+## Develop against Render
 
-You need **Node.js 22.13 or newer** (get the LTS from nodejs.org). Local data uses the SQLite built into Node, so there is nothing to compile and no Visual Studio needed.
+The normal development command starts only the Vite frontend. API and upload requests are proxied to your Render service, so you do not need a local API server or database.
+
+Create a `.env.local` file in the project root and set your Render service URL:
+
+```env
+VITE_API_PROXY_TARGET=https://your-render-service.onrender.com
+```
+
+Then run:
 
 ```
 npm install
-npm run seed      # once: creates demo users, products and orders in a local SQLite file
-npm run dev       # starts the API (port 3001) and the website (port 5173) together
+npm run dev
 ```
 
-Open http://localhost:5173
+Open http://localhost:5173. Keep the Render service's `DATABASE_URL` set to your Render Postgres connection string.
 
 | Demo login | Password | What it is |
 |---|---|---|
@@ -27,11 +34,11 @@ With no Paystack key set, payments run in **demo mode**: pressing Pay settles in
 
 ### Other commands
 ```
-npm test          # 23 backend tests (escrow, wallet, permissions, uploads, webhook...)
+npm test          # backend tests (SQLite is explicitly enabled only for this test process)
 npm run build     # production build of the website (served by the API in production)
 npm start         # run the API (+ built website if dist/ exists)
 npm run icons     # regenerate PWA/home-screen icons from public/brand/logo.jpg
-npm run create-admin   # make a real admin: ADMIN_EMAIL=... ADMIN_PASSWORD=... (12+ chars)
+npm run create-admin   # make an admin against the configured Postgres database
 ```
 To run the tests against Postgres: `TEST_DATABASE_URL=postgres://user:pass@localhost:5432/db npm test`
 
@@ -52,5 +59,5 @@ server/         Express API
   schema.js     all database tables
   seed.js       demo data (dev only)
   tests/        API test suite
-public/brand/   logo.jpg lives here; icons in public/icons
+public/brand/   logo.jpg (standalone bag-and-K image); icons in public/icons
 ```

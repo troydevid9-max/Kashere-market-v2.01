@@ -12,6 +12,7 @@ export const config = {
   port: Number(env.PORT || 3001),
   jwtSecret: env.JWT_SECRET || 'dev-only-secret-change-me',
   databaseUrl: env.DATABASE_URL || '',
+  allowSqlite: env.ALLOW_SQLITE === 'true',
   sqliteFile: env.SQLITE_FILE || path.join(here, 'data', 'kashere.db'),
   uploadDir: env.UPLOAD_DIR || path.join(here, 'uploads'),
   appUrl: env.APP_URL || 'http://localhost:5173',
