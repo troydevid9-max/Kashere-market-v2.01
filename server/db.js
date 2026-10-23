@@ -4,7 +4,7 @@ import knexLib from "knex";
 import { config } from "./config.js";
 import { Client_NodeSqlite } from "./sqliteNode.js";
 
-/** Postgres by default; SQLite is available only when explicitly enabled for tests. */
+/** Postgres when DATABASE_URL is set (production), otherwise a local SQLite file. */
 export function createDb({ file, schema } = {}) {
   if (config.databaseUrl) {
     return knexLib({
@@ -17,8 +17,6 @@ export function createDb({ file, schema } = {}) {
       ...(schema ? { searchPath: [schema] } : {}),
     });
   }
-  if (config.prod || !config.allowSqlite)
-    throw new Error('DATABASE_URL must be set. Set ALLOW_SQLITE=true only for local tests.')
   const filename = file ?? config.sqliteFile;
   if (filename !== ":memory:")
     fs.mkdirSync(path.dirname(filename), { recursive: true });

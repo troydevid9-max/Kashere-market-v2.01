@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -k -n api,web -c gray,blue \"npm:dev:api\" \"npm:dev:web\"",
     "dev:web": "vite",
     "dev:api": "node --watch server/index.js",
     "start": "node server/index.js",
@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "seed": "node server/seed.js",
     "create-admin": "node server/createAdmin.js",
-    "test": "node --import ./server/tests/bootstrap.js --test \"server/tests/**/*.test.js\"",
+    "test": "node --test \"server/tests/**/*.test.js\"",
     "icons": "node scripts/make-icons.mjs"
   },
   "dependencies": {
